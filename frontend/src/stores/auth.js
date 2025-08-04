@@ -1,6 +1,9 @@
-// frontend/src/stores/auth.js - Fixed version
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import API_BASE_URL from '@/config/api'
+
+// Set base URL
+axios.defaults.baseURL = API_BASE_URL
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -54,7 +57,7 @@ export const useAuthStore = defineStore('auth', {
         localStorage.setItem('role', response.data.role)
       } catch (error) {
         console.error('Failed to fetch user:', error)
-        this.logout() // Logout if can't fetch user
+        this.logout()
       }
     },
     
