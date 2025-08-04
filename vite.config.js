@@ -1,13 +1,16 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vuetify from 'vite-plugin-vuetify'
 import path from 'path'
 
-// Detect if it's production build (on Vercel)
 const isProduction = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
-  base: isProduction ? '/' : '/',  // ถ้า deploy ใน subfolder เช่น /frontend/ ให้ใส่ './'
-  plugins: [vue()],
+  base: isProduction ? '/' : '/',
+  plugins: [
+    vue(),
+    vuetify({ autoImport: true }) // ✅ เพิ่มตรงนี้!
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
