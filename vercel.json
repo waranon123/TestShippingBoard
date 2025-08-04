@@ -3,7 +3,6 @@
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "vercel-build": "vite build",
       "config": {
         "distDir": "dist"
       }
